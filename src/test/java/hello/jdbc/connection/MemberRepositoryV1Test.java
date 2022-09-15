@@ -20,7 +20,7 @@ class MemberRepositoryV1Test {
     MemberRepositoryV1 repository;
 
     @BeforeEach
-    void beforeEach(){
+    void beforeEach() throws Exception{
         //기본 DriverManager - 항상 새로운 커넥션을 획득
 //        DriverManagerDataSource dataSource = new DriverManagerDataSource(URL, USERNAME, PASSWORD);
 
@@ -34,7 +34,9 @@ class MemberRepositoryV1Test {
     }
 
     @Test
-    void crud() throws SQLException {
+    void crud() throws SQLException, InterruptedException {
+        log.info("start");
+
         //save
         Member member = new Member("memberV2", 10000);
         repository.save(member);
